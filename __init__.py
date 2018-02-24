@@ -62,7 +62,8 @@ class MosquitoSpeak(MycroftSkill):
         self.last_message = manager.Value(c_char_p, "There is no last message")
 
         client = mqtt.Client('mycroft_' + self.room_name)  # use self.room_name from home.mycroft.ai to provide a unique device name
-
+        LOGGER.info('MosquitoSpeak: Client name = mycroft_' + self.room_name)
+        
         client.on_connect = self.on_connect
         client.on_message = self.on_message
         client.connect(self.host, str(self.port), 120)
