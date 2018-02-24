@@ -69,8 +69,8 @@ class MosquitoSpeak(MycroftSkill):
         client.connect(self.host, str(self.port), 120)
         client.loop_start()
 
-        time.sleep(1)
-        client.publish(self.topic, "_starting " + self.uuid.value)
+        #time.sleep(1)
+        #client.publish(self.topic, "_starting " + self.uuid.value) # is this required? just causes a problem with multiple clients!
 
     def on_connect(self, client, userdata, flags, rc):
         client.subscribe(self.topic)
